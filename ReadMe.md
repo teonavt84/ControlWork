@@ -1,4 +1,4 @@
-﻿/*Итоговая проверочная работа.
+Итоговая проверочная работа.
 Данная работа необходима для проверки ваших знаний и навыков по итогу прохождения первого блока обучения
 на программе разработчик. Мы должны убедиться что базовое знакомство с it прошло успешно.
 Задача алгоритмически не самая сложная, однако для полценного выполнения проверочной работы необходимо:
@@ -14,61 +14,19 @@
 Примеры:
 ['hello", "2", "world", ":-)"] -> ["2", "-)"]
 ["1234", "1567", "-2", "computer science"] -> ["-2"]
-["Russia", "Denmark", "Kazan"] -> []*/
+["Russia", "Denmark", "Kazan"] -> []
 
-void PrintArray(string[] array)
-{
-    Console.Write("[");
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (i < array.Length - 1) Console.Write($"{array[i]}, ");
-        else Console.Write($"{array[i]}");
-    }
-    Console.Write("]");
-}
+Решение.
 
-int SizeModifiedArray(string[] array, int lengthLines)
-{
-int count = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i].Length <= lengthLines)
-            count++;
-    }
-    return count;
-}
-
-string[] ModifiedArray(string[] array, int lengthLines, int sizeNewArray)
-{
-    string[] newArray = new string[sizeNewArray];
-    int i = 0;
-    int j = 0;
-    while (j < array.Length)
-        if (array[j].Length <= lengthLines)
-        {
-            newArray[i] = array[j];
-            i++;
-            j++;
-        }
-        else
-        {
-            j++;
-        }
-    return newArray;
-}
-
-Console.Write("Введите длину массива: ");
-int arrayLength = Convert.ToInt32(Console.ReadLine());
-string[] array = new string[arrayLength];
-for (int i = 0; i < arrayLength; i++)
-{
-    Console.Write($"Введите значение {i} элемента: ");
-    string element = Console.ReadLine()!;
-    array[i] = element;
-}
-int lengthLines = 3;
-int sizeModifiedArray = SizeModifiedArray(array, lengthLines);
-string[] ArrayTwo = ModifiedArray(array, lengthLines, sizeModifiedArray);
-PrintArray(array);
-Console.Write(" -> ");
-PrintArray(ArrayTwo);
+1. При запуске программы у пользователя запрашивается длина массива.
+2. С помощью цикла пользователь заполняет массив значениями массива.
+3. В методе `SizeModifiedArray` происходит следующее:
+- Создается переменная `count`, в которой будет содержаться длина для нового массива.
+- С помощью цикла `for`, который работает пока `i` меньше длины массива, проверяется условие: если элемент массива меньше 3, то к переменной `count` плюсуется единица.
+- После завершения всех итераций происходит возврат `count`.
+4. В методе `ModifiedArray` происходит следующее:
+- Создаются новый массив `newArray`, переменные `i` и `j`.
+- В цикле `while`, который работает пока `j` меньше длины массива, проверяется условие: если элемент массива меньше 3, то элементу `i` нового массива присваивается значение элемента `j` исходного массива.
+- После завершения всех итераций происходит возврат нового массива.
+5. С помощью метода `PrintArray` выводится исходный массив.
+6. С помощью метода `PrintArray` выводится новый массив.
